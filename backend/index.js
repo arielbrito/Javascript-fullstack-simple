@@ -1,8 +1,8 @@
-//
+//Instanciar los objetos y librerias 
 const express = require('express');
 const morgan = require('morgan');
 const multer= require('multer');
-const path =require('path');
+const path =require('path'); // modulo para manejar directorios y archivos 
 
 //Inicializaciones:
 const app= express();
