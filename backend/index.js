@@ -1,4 +1,5 @@
 //Instanciar los objetos y librerias 
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const multer= require('multer');
@@ -11,7 +12,7 @@ require('./database');
 
 //Setting/Configuraciones:
 
-app.set('port', 3000);
+app.set('port',process.env.PORT || 3000);
 
 //Middlewares:
 app.use(morgan('dev'));
