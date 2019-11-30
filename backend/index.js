@@ -4,8 +4,10 @@ const morgan = require('morgan');
 const multer= require('multer');
 const path =require('path'); // modulo para manejar directorios y archivos 
 
+
 //Inicializaciones:
 const app= express();
+require('./database');
 
 //Setting/Configuraciones:
 
@@ -28,6 +30,13 @@ app.use(multer({storage}).single('image'));
 // Convertir los datos recibidos del frontend en un JSON
 app.use(express.urlencoded({extendedÇ:false}));
 app.use(express.json());
+
+
+//Routes
+ app.use('/api/books',require('./routes/book')); // Aqui enviamos las rutas
+
+ //Static files
+ app.use(express.static(path.join(__dirname,'public')));
 
 // Iniciar el servidor:
 app.listen(app.get('port'),()=>{
