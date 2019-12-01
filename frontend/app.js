@@ -1,6 +1,7 @@
-require('./styles/app.css');
+import "./styles/app.css";
 
-import UI from './UI';
+import Book from './models/Book.js';
+import UI from './UI.js';
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -33,10 +34,26 @@ document.getElementById('book-form').addEventListener('submit', e=>{
     formData.append('autor', autor);
     formData.append('isbn', isbn);   
 
-    const ui= new UI();
+    // const ui= new UI();
 
-    ui.addNewBook(formData);
-    ui.renderMessage('Libro añadido correctamente','success',2000 );
+    // ui.addNewBook(formData);
+    // ui.renderMessage('Libro añadido correctamente','success',2000 );
+
+    // Instatiating the UI
+    const ui = new UI();
+
+    // New Book Object
+    const book = new Book(title, autor, isbn);
+
+    // Validating User Input
+    if (title === '' || autor === '' || isbn === '') {
+      ui.renderMessage('Please fill all the fields', 'error', 3000);
+    } else {
+      // Pass the new book to the UI
+      ui.addNewBook(formData);
+      ui.renderMessage('New Book Added Successfully', 'success', 2000);
+    }
+
 
 
     e.preventDefault();

@@ -7,7 +7,7 @@ const path =require('path');
 const router= Router();
 
 router.get('/',async (req, res)=> {// Esta ruta muestra todos los objetos
-   const books= await Book.find();
+   const books= await Book.find().sort('-_id');
 
    res.json(books);
      

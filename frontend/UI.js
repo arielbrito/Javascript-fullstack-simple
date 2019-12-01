@@ -16,12 +16,10 @@ class  UI {
 
      books.forEach(book =>{
        const div=  document.createElement('div');
-
-       div.className='';
-
+       div.className='animated fadeInRight';
        div.innerHTML=`
           <div class="card m-2">
-              <div class="row">
+              <div class="row no-gutters">
                   <div class="col-md-4">
                       <img src="${book.imagePath}" alt="" class="img-fluid">
                   </div>
@@ -48,20 +46,21 @@ class  UI {
     }
 
    async addNewBook(book){
-      await  _bookService.saveBooks(book);
-      this.clearBookForm();
+      await  _bookService.saveBooks(book);      
       this.renderBooks();
+      this.clearBookForm();
 
     }
     clearBookForm(){
         document.getElementById('book-form').reset();
+        document.getElementById('title').focus();
 
     }
 
     renderMessage(message, colorMessage, secondsToRemove){
       const div=  document.createElement('div');
 
-        div.className=`alert alert-${colorMessage} message`;
+        div.className=`alert alert-${colorMessage} message `;
 
         const container= document.querySelector('.col-md-4');
         const bookForm= document.querySelector('#book-form');

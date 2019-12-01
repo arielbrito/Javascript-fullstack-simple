@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV=='development'){
+if (process.env.NODE_ENV !=='production'){
     require('dotenv').config();
 
 }
@@ -51,7 +51,7 @@ app.use(cors());
 // Iniciar el servidor:
 app.listen(app.get('port'),()=>{
 
-    console.log('Servidor corriendo en ', app.get('port'));
+    console.log(`Servidor corriendo en ${app.get('port')}`);
 
 
 });
