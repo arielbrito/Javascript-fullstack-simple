@@ -1,6 +1,13 @@
 require('./styles/app.css');
 
-import BookService from './services/BookService';
+import UI from './UI';
+
+
+document.addEventListener('DOMContentLoaded', ()=>{
+    const ui= new UI();
+    ui.renderBooks();
+})
+
 
 document.getElementById('book-form').addEventListener('submit', e=>{
     
@@ -13,16 +20,13 @@ document.getElementById('book-form').addEventListener('submit', e=>{
     formData.append('image', image[0]);
     formData.append('title', title);
     formData.append('autor', autor);
-    formData.append('isbn', isbn);
+    formData.append('isbn', isbn);   
 
-    console.log(title, autor, isbn, image)
+    const ui= new UI();
 
-    const _bookService= new BookService()
-    _bookService.saveBooks(formData);
-
-    
+    ui.addNewBook(formData);
 
 
     e.preventDefault();
 });
-import { format } from 'path';
+
