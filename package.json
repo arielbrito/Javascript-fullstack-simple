@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-     "dev": "cross-env NODE_ENV=development nodemon backend/index.js --ignore frontend",
+  "scripts": {     
     "start": "cross-env NODE_ENV=production nodemon backend/index.js",
     "postinstall": "npm run build",
     "build": "cross-env NODE_ENV=production webpack",
