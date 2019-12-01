@@ -33,6 +33,7 @@ class BookService {
 
         });
      const data=  await response.json()
+     return data
 
     }
 

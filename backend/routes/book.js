@@ -1,6 +1,8 @@
 //Importar el modulo Router de expres para manejar las rutas
 const {Router}= require('express');
 const Book = require('../models/Book');
+const {unlink}= require('fs-extra');
+const path =require('path');
 
 const router= Router();
 
@@ -26,6 +28,8 @@ router.post('/', async(req, res)=>{// En esta enviamos a la base de datos los ob
 router.delete('/:id', async(req, res)=>{// Eliminamos un objeto
 
    const book= await Book.findByIdAndDelete(req.params.id);
+   unlink(path.resolve('./backend/public'+ book.imagePath) );
+
     //console.log(req.params.id)
     res.json({message:'Libro eliminado correctamente'});
 
