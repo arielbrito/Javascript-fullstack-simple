@@ -4,11 +4,12 @@ if (process.env.NODE_ENV=='development'){
 }
 
 //Instanciar los objetos y librerias 
-
 const express = require('express');
 const morgan = require('morgan');
 const multer= require('multer');
 const path =require('path'); // modulo para manejar directorios y archivos 
+
+const cors=require('cors');
 
 
 //Inicializaciones:
@@ -36,6 +37,9 @@ app.use(multer({storage}).single('image'));
 // Convertir los datos recibidos del frontend en un JSON
 app.use(express.urlencoded({extendedÇ:false}));
 app.use(express.json());
+
+//CORS
+app.use(cors());
 
 
 //Routes

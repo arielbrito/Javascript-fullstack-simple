@@ -13,8 +13,9 @@ router.get('/',async (req, res)=> {// Esta ruta muestra todos los objetos
 
 router.post('/', async(req, res)=>{// En esta enviamos a la base de datos los objetos con los datos correspondientes
    const {title, autor, isbn}=req.body;
+   const imagePath='/upload/'+req.file.filename;
 
-  const newBook= new Book({title, autor, isbn});
+  const newBook= new Book({title, autor, isbn, imagePath});
   await newBook.save();
   console.log(newBook);
     res.json({message:'libro guardado'});
